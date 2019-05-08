@@ -33,6 +33,9 @@ Set.prototype.elem = function(index){
     }
     return iterator1.next().value;
 };
+function write(value) {
+    console.log(value);
+}
 /*
 let set= new Set();
 set.add(2);
