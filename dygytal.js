@@ -56,8 +56,14 @@ Set.prototype.elem = function(index){
     }
     return iterator1.next().value;
 };
-function write(value) {
-    console.log(value);
+function write(_) {
+
+    if (_ ===undefined){
+        console.error('Undefiend!')
+    }
+    else {
+        console.log(_)
+    }
 }
 function getURL(){
    return location.href
