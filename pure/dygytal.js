@@ -27,7 +27,11 @@ Object.defineProperty(Number.prototype, "reverse", {
         }
     }
 });
-
+Array.prototype.deleteAll= function (value) {
+    while (this.includes(value)) {
+        this.splice(this.indexOf(value),1)
+    }
+};
 Array.prototype.deleteIndex= function (index) {
     this.splice(index,1)
 };
@@ -50,7 +54,7 @@ Object.defineProperty(Set.prototype, "allEqual", {
 });
 Set.prototype.elem = function(index){
     let iterator1 = this.values();
-    while (index > 1) {
+    while (index > 0) {
         iterator1.next().value;
         index--;
     }
@@ -59,7 +63,7 @@ Set.prototype.elem = function(index){
 function write(_) {
 
     if (_ ===undefined){
-        console.error('Undefiend!')
+        console.trace('Undefiend!')
     }
     else {
         console.log(_)
@@ -68,21 +72,21 @@ function write(_) {
 function getURL(){
    return location.href
 }
-
+Array.prototype.insert = function(index) {
+    this.splice.apply(this, [index, 0].concat(
+        Array.prototype.slice.call(arguments, 1)));
+    return this;
+};
 
 //let int=125.39;
 //write(int.reverse);
 /*
 let set= new Set();
+set.add(1);
 set.add(2);
-set.add(2);
-console.log(set);
-console.log(set.elem(1));
+console.log(set.elem(1)); //2
 console.log(set.allEqual);
 let arr= [1,2,3,4,5,2];
-console.log(arr);
-arr.deleteIndex(0);
-arr.deleteElementFromLeft(3);
-arr.deleteElementFromRight(2);
-console.log(arr);
+arr.deleteIndex(0); //2,3,4,5,2
+[1,1,2,1,3,1].deleteAll(1) //[2,3]
 */
