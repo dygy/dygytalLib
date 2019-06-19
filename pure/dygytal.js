@@ -75,30 +75,65 @@ String.prototype.replaceAll = function (value, withA) {
     let regex = new RegExp(value,'g');
     return this.replace(regex,withA)
 };
+function findFieldByName(json,fieldName) {
+    let str= JSON.stringify(json);
+    let regExObj = new RegExp('\"'+ fieldName+'\"' + '\\:\\{(\\n|.)*?\\}');
+    let regExStr = new RegExp('\"'+ fieldName+'\"' + '\\:\\"(\\n|.)*?\\"');
+    let regExNum = new RegExp('\"'+ fieldName+'\"' + ':((\\d|.|x)+?)');
+    let regExArr = new RegExp('\"'+ fieldName+'\"' + ':\\[(.)*\\]');
+    if (regExStr.test(str)) {
+        //    write('\' \'')
+        return regExStr.exec(str)[0].replace('\"'+ fieldName+'\":','')
+    }
+    else if (regExObj.test(str)) {
+        //    write('JSON')
+        return JSON.parse(regExObj.exec(str)[0].replace('\"'+ fieldName+'\":',''))
+    }
+    else if (regExArr.test(str)) {
+        //    write('Arr[]')
+        let arr = regExArr.exec(str)[0].replace('\"'+ fieldName+'\":','').replace('[','').replace(/$\]/,'').split(',');
+        write(arr)
+        for (let i = 0; i < arr.length; i++) {
+            if (/\[(.+)]/.test(arr[i])) {
+                arr[i]=arr[i].replace('[','').replace(/$\]/,'').split(',')
+                for (let y = 0; y < arr[i].length; y++) {
+                    if (/]+/.test(arr[i])){
+                        arr[i][y]= arr[i][y].replace(/]+/,'')
+                    }
+                }
+            }
+            else if (/{(.+)}/.test(arr[i])) {
+                arr[i]=JSON.parse(arr[i])
+            }
+            else if (/]+/.test(arr[i])){
+               arr[i]= arr[i].replace(/]+/,'')
+            }
+        }
+    return arr
+    }
+    else if (regExNum.test(str)) {
+        //    write('int')
+        return parseInt( regExNum.exec(str)[0].replace('\"'+ fieldName+'\":',''))
+    }
 
-/* To fix
+}
+/*
 let jason = {
     Cool:{
         Age:0,
         Sage:1
     },
     NotCool:{
-      Name:'',
-      Flame:''
+        Name:'',
+        Flame:'',
+        Arr:[2,2,[1],{Name:'Lol'},1]
     }
 };
-console.log(findValue(jason ,'NotCool'));
+write(findFieldByName(jason ,'Arr'));
+/*
 
-function findValue(json,fieldName) {
-    let str= JSON.stringify(json);
-    let regEx = new RegExp(fieldName+'\\:\\{(\\n|.)*?\\}');
-    if (regEx.test(str)) {
-        return regEx.exec(str)
-    }
 
-    console.log(regEx)
-    //TODO:: if '', if int, if array
-}
+
 //let str = 'hello'
 //write(str.replaceAll('l','2')) he22o
 //let int=125.39;
