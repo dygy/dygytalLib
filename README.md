@@ -3,7 +3,7 @@ A library of some basic functions, that not exist this easy way right now in Jav
 It has Node and Pure JS implementation, they are just a bit different. <br>
 let's see how to use it at pure.<br>
 ```
-<script src="./node_modules/dygytalLib/pure/dygytal.js" </script> 
+<script src="./node_modules/dygytalLib/pure/dygytal.js"> </script> 
 <script> 
 write('24'.reverse.toInt()+5) // 47 
 </script> 
