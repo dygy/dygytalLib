@@ -90,7 +90,10 @@ require('./node_modules/dygytalLib/node/dygytal').write(undefined);
 
 # getURL() <br>
 returning current URL value. <br> Working only for Pure, as you can't get URL of Node js.
-```write(getURL) //printing your curent URL```
+
+```
+write(getURL) //printing your curent URL
+```
 
 
 # insert(index) <br>
