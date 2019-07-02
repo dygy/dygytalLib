@@ -97,7 +97,7 @@ write(getURL) //printing your curent URL
 
 
 # insert(index) <br>
-returning array with inserted one more value after given index. <br>
+returning array with inserted one more value before given index. <br>
 ```let arr = [1,2]
 arr.insert(1,[])
 write(arr)//[ 1, [], 2 ]
