@@ -16,7 +16,7 @@ methods.write('23'.reverse);
 <br>
 Now let's see one method by one. <br>
 
-# allEqual <br>
+## allEqual <br>
 after selecting an array or set, you can return boolean true or false, if every one of elem are same. <br>
 ```
 let set= new Set();
@@ -25,7 +25,7 @@ set.add(2);
 write(set.allEqual); //false
 ```
 
-**reverse** <br>
+## reverse <br>
 reversing string of integer. Even the float numbers. Can be helpful at information security.<br> 
 You may reverse MD5 on both server and client, so it won't be easy to understan.<br>
 ```
@@ -33,33 +33,34 @@ let int=125.39;
 write(int.reverse);//39.521
 ```
 
-**replaceAll**(value) <br>
+
+## replaceAll(value) <br>
 replacing all elements that equal to the given value.<br>
 ```
 let str = 'hello'
 write(str.replaceAll('l','2')) //he22o
 ```
 
-**deleteAll(value)** <br>
+## deleteAll(value) <br>
 deleting all elements that equal to the given value.<br>
 ```
 [1,1,2,1,3,1].deleteAll(1) //[2,3]
 ```
 
-**deleteIndex(index)** <br>
+## deleteIndex(index) <br>
 
 deleting element from array with given index. <br>
 ```[1,2,3].deleteIndex(0)//[2,3] ```
 
-**deleteElementFromLeft(value)** <br>
+## deleteElementFromLeft(value) <br>
 deleting first element from left, from array with given value. <br>
 ```[1,2,3,1].deleteElementFromLeft(1) // [2,3,1] ```
 
-**deleteElementFromRight(value)** <br>
+## deleteElementFromRight(value)  <br>
 deleting first element from right, from array with given value. <br>
 ```[1,2,3,1].deleteElementFromRight(1) // [1,2,3] ```
 
-**elem(index)** <br>
+## elem(index) <br>
 returning the element from set with given index. <br>
 ```
 let set= new Set();
@@ -67,7 +68,7 @@ set.add(1);
 set.add(2);
 write(set.elem(1)); //2
 ```
-**write(_)** <br>
+## write(_) <br>
 writing a value as console.log , but if the value undefiend, than printing stack trace, <br>
 that's not breaking programm, but showing exact line of Undefiend. <br> It can be used like this in Pure js
 ```
@@ -89,7 +90,7 @@ And like this in node
 require('./node_modules/dygytalLib/node/dygytal').write(undefined);
 ```
 
-**getURL()** <br>
+## getURL() <br>
 returning current URL value. <br> Working only for Pure, as you can't get URL of Node js.
 
 ```
@@ -97,17 +98,17 @@ write(getURL) //printing your curent URL
 ```
 
 
-**insert(index)** <br>
+## insert(index) <br>
 returning array with inserted one more value before given index. <br>
 ```let arr = [1,2]
 arr.insert(1,[])
 write(arr)//[ 1, [], 2 ]
 ```
 
-**toInt()** <br>
+## toInt() <br>
 returning integer from given string. <br>
 ``` let num = '35'.toInt()+5 // 40 ```
-**findFieldByName(json,fieldName)** <br>
+## findFieldByName(json,fieldName) <br>
 returning a  value from JSON by given name<br>
 ```
 let jason = {
