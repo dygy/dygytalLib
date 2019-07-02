@@ -1,57 +1,53 @@
-module.exports.allEqual =function allEqual (arr){
-    let firstValue = arr[0];
-    for(let value=1 ;value<arr.length; value++) {
-        if (arr[value] !== firstValue) {
-            return false;}}
-    return true; };
-
-module.exports.reverseString = function reverseString(string) {
-    let arr = string.split('');
-    arr.reverse();
-    return arr.join('')
-};
-
-module.exports.reverseNum = function reverseNum(num) {
-    let arr = num.toString().split('');
-    arr.reverse();
-    if (arr.indexOf('.') !== -1) {
-        return parseFloat(arr.join(''))
-    } else {
-        return parseInt(arr.join(''))
+module.exports.allEqual = Object.defineProperty(Array.prototype, "allEqual", {
+    get: function() {
+        let firstValue = this[0];
+        for(let value=1 ;value<this.length; value++) {
+            if (this[value] !== firstValue) {
+                return false;}}
+        return true;}
+});
+module.exports.reverseString =Object.defineProperty(String.prototype, "reverse", {
+    get: function() {
+        let arr = this.split('');
+        arr.reverse();
+        return arr.join('')
     }
-};
-
-module.exports.deleteAllLike = function deleteAllLike(arr, value) {
-    while (arr.includes(value)) {
-        arr.splice(arr.indexOf(value), 1)
-    }
-};
-
-module.exports.deleteArrIndex = function deleteIndex(arr, index) {
-    arr.splice(index, 1)
-};
-
-module.exports.deleteElementFromLeftArr = function deleteElementFromLeft(arr, value) {
-    let index = arr.indexOf(value);
-    arr.splice(index, 1)
-};
-
-module.exports.deleteElementFromRightArr = function deleteElementFromRight(arr, value) {
-    let index = arr.lastIndexOf(value);
-    arr.splice(index, 1)
-};
-
-module.exports.allEqualSet = function allEqualSet(set) {
-    let firstValue = set[0];
-    for (let value = 1; value < set.size; value++) {
-        if (set.elem(value) !== firstValue) {
-            return false;
+});
+module.exports.reverseNum = Object.defineProperty(Number.prototype, "reverse", {
+    get: function() {
+        let arr = this.toString().split('');
+        arr.reverse();
+        if (arr.indexOf('.')!==-1){
+            return parseFloat(arr.join(''))
         }
-    }
-    return true;
+        else {
+            return parseInt(arr.join(''))
+        }}});
+module.exports.deleteAll = Array.prototype.deleteAll= function (value) {
+    while (this.includes(value)) {
+        this.splice(this.indexOf(value),1)
+    }};
+module.exports.deleteIndex = Array.prototype.deleteIndex= function (index) {
+    this.splice(index,1)
 };
-module.exports.elemFromSet = function elemFromSet(set, index) {
-    let iterator1 = set.values();
+module.exports.deleteElementFromLeft =Array.prototype.deleteElementFromLeft= function (value) {
+    let index = this.indexOf(value);
+    this.splice(index,1)
+};
+module.exports.deleteElementFromRight =Array.prototype.deleteElementFromRight= function (value) {
+    let index = this.lastIndexOf(value);
+    this.splice(index,1)
+};
+module.exports.allEqualSet =Object.defineProperty(Set.prototype, "allEqual", {
+    get: function() {
+        let firstValue = this[0];
+        for(let value=1 ;value<this.size; value++) {
+            if (this.elem(value) !== firstValue) {
+                return false;}}
+        return true;}
+});
+module.exports.elemOfSet =Set.prototype.elem = function(index){
+    let iterator1 = this.values();
     while (index > 0) {
         iterator1.next().value;
         index--;
@@ -59,22 +55,26 @@ module.exports.elemFromSet = function elemFromSet(set, index) {
     return iterator1.next().value;
 };
 module.exports.write = function write(_) {
-    if (_ === undefined) {
+    if (_ ===undefined){
         console.trace('Undefiend!')
-    } else {
+    }
+    else {
         console.log(_)
     }
+}
+module.exports.insertArr = Array.prototype.insert = function(index) {
+    this.splice.apply(this, [index, 0].concat(
+        Array.prototype.slice.call(arguments, 1)));
+    return this;
 };
-module.exports.insertInArr = function insertInArr(arr, index) {
-    arr.splice.apply(arr, [index, 0].concat(
-        arr.slice.call(arguments, 1)));
-    return arr;
+module.exports.replaceAll =String.prototype.replaceAll = function (value, withA) {
+    let regex = new RegExp(value,'g');
+    return this.replace(regex,withA)
 };
-module.exports.replaceAll = function (str, value, withA) {
-    let regex = new RegExp(value, 'g');
-    return str.replace(regex, withA)
+module.exports.toInt = String.prototype.toInt = function () {
+    return Number.parseInt(this)
 };
-module.exports.findFieldByName = function (json,fieldName) {
+module.exports.findFieldByName = function findFieldByName(json,fieldName) {
     let str= JSON.stringify(json);
     let regExObj = new RegExp('\"'+ fieldName+'\"' + '\\:\\{(\\n|.)*?\\}');
     let regExStr = new RegExp('\"'+ fieldName+'\"' + '\\:\\"(\\n|.)*?\\"');

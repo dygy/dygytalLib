@@ -75,6 +75,9 @@ String.prototype.replaceAll = function (value, withA) {
     let regex = new RegExp(value,'g');
     return this.replace(regex,withA)
 };
+String.prototype.toInt = function () {
+    return Number.parseInt(this)
+};
 function findFieldByName(json,fieldName) {
     let str= JSON.stringify(json);
     let regExObj = new RegExp('\"'+ fieldName+'\"' + '\\:\\{(\\n|.)*?\\}');
@@ -117,6 +120,7 @@ function findFieldByName(json,fieldName) {
     }
 
 }
+//write('23'.toInt()+5);
 /*
 let jason = {
     Cool:{

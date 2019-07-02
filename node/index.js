@@ -1,6 +1,2 @@
-/*
 const methods = require('./dygytal');
-
-methods.write(undefined);
-
-*/
+methods.write('23'.reverse);
