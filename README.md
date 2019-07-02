@@ -5,7 +5,7 @@ let's see how to use it at pure.<br>
 ```
 <script src="./node_modules/dygytalLib/pure/dygytal.js" </script> 
 <script> 
-write('24'.reverse().toInt()+5) // 47 
+write('24'.reverse.toInt()+5) // 47 
 </script> 
 ```
 And now on node. <br>
