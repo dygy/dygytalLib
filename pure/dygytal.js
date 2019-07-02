@@ -6,6 +6,15 @@ Object.defineProperty(Array.prototype, "allEqual", {
                 return false;}}
         return true;}
 });
+Object.defineProperty(Set.prototype, "allEqual", {
+    get: function() {
+        let firstValue = this[0];
+        for(let value=1 ;value<this.size; value++) {
+            if (this.elem(value) !== firstValue) {
+                return false;}}
+        return true;}
+});
+
 Object.defineProperty(String.prototype, "reverse", {
     get: function() {
         let arr = this.split('');
@@ -27,8 +36,15 @@ Array.prototype.deleteAll= function (value) {
     while (this.includes(value)) {
         this.splice(this.indexOf(value),1)
     }};
+Set.prototype.deleteAll= function (value) {
+    while (this.has(value)) {
+        this.delete(value)
+    }};
 Array.prototype.deleteIndex= function (index) {
     this.splice(index,1)
+};
+Set.prototype.deleteIndex= function (index) {
+    this.delete(this.elem(index))
 };
 Array.prototype.deleteElementFromLeft= function (value) {
     let index = this.indexOf(value);
@@ -38,14 +54,6 @@ Array.prototype.deleteElementFromRight= function (value) {
     let index = this.lastIndexOf(value);
     this.splice(index,1)
 };
-Object.defineProperty(Set.prototype, "allEqual", {
-    get: function() {
-        let firstValue = this[0];
-        for(let value=1 ;value<this.size; value++) {
-            if (this.elem(value) !== firstValue) {
-                return false;}}
-        return true;}
-});
 Set.prototype.elem = function(index){
     let iterator1 = this.values();
     while (index > 0) {
@@ -76,7 +84,7 @@ String.prototype.replaceAll = function (value, withA) {
     return this.replace(regex,withA)
 };
 String.prototype.toInt = function () {
-    return Number.parseInt(this)
+    return parseInt(this)
 };
 function findFieldByName(json,fieldName) {
     let str= JSON.stringify(json);
@@ -120,35 +128,3 @@ function findFieldByName(json,fieldName) {
     }
 
 }
-//write('23'.toInt()+5);
-/*
-let jason = {
-    Cool:{
-        Age:0,
-        Sage:1
-    },
-    NotCool:{
-        Name:'',
-        Flame:'',
-        Arr:[2,2,[1],{Name:'Lol'},1]
-    }
-};
-write(findFieldByName(jason ,'Arr'));
-/*
-
-
-
-//let str = 'hello'
-//write(str.replaceAll('l','2')) he22o
-//let int=125.39;
-//write(int.reverse);
-/*
-let set= new Set();
-set.add(1);
-set.add(2);
-write(set.elem(1)); //2
-write(set.allEqual);
-write [1,2,3,4,5,2];
-arr.deleteIndex(0); //2,3,4,5,2
-[1,1,2,1,3,1].deleteAll(1) //[2,3]
-*/
