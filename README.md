@@ -1,7 +1,7 @@
 #   DygytalLib 
 A library of some basic functions, that not exist this easy way right now in JavaScript. <br>
 It has Node and Pure JS implementation, they are just a bit different. <br>
-To install you need to put in your console  ```npm i @upgradle/dygytallib```<br>
+To install you need to put in your console   ```npm i @upgradle/dygytallib```<br>
 let's see how to use it at pure.<br>
 ```
 <script src="@upgradle/dygytallib/pure/dygytal"> </script> 
