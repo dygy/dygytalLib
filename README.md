@@ -20,10 +20,10 @@ Now let's see one method by one. <br>
 ## allEqual <br>
 after selecting an array or set, you can return boolean true or false, if every one of elem are same. <br>
 ```
-let set= new Set();
-set.add(1);
-set.add(2);
-write(set.allEqual); //false
+let arr= [];
+arr.push(1);
+arr.push(2);
+write(arr.allEqual); //false
 ```
 
 ## reverse <br>
