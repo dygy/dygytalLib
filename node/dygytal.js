@@ -117,3 +117,21 @@ module.exports.findFieldByName = function findFieldByName(json,fieldName) {
 
 };
 
+module.exports.includesBoth = String.prototype.includesBoth = function () {
+    let isSuccess = true;
+    Object.values(arguments).forEach(e=>{
+        if (!this.includes(e)){
+            isSuccess = false
+        }
+    })
+    return isSuccess
+};
+
+module.exports.isJson = String.prototype.isJson= function (){
+    try {
+        return JSON.parse(this)
+    } catch (e) {
+        return false;
+    }
+}
+

@@ -125,3 +125,10 @@ let jason = {
 };
 write(findFieldByName(jason ,'Arr'));  //[ '2', '2', [ '1' ], { Name: 'Lol' }, '1' ]
 ```
+## includesBoth() <br>
+returning bool, is every string in arguments where included. <br>
+```'aaa bbb'.includesBoth('aaa', 'bbb') //true'```
+
+## isJson() <br>
+returning variable, if it is available to become JSON after parse . <br>
+```'{}'.isJson() //{}'```
