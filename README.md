@@ -132,3 +132,8 @@ returning bool, is every string in arguments where included. <br>
 ## isJson() <br>
 returning variable, if it is available to become JSON after parse . <br>
 ```'{}'.isJson() //{}'```
+
+## SafeStorage
+use it same as localstorage for getItem, setItem, removeItem, last argument is 
+```options``` - you can put here ```local``` property to select error langs (```ru```, ```en```, ```es```)
+it provides ability to don't check local storage permission and instructions to end user, how to enable it in browser.
